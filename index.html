@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050b18"><meta name="description" content="Your personal offline study library"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>STUDYVAULT AI</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <header><div class="brand"><div class="logo">SV</div><div><h1>STUDYVAULT <span>AI</span></h1><small>YOUR PERSONAL STUDY UNIVERSE</small></div></div><div class="class-pill">CLASS 12</div></header>
+  <main>
+    <section class="hero"><div><p class="eyebrow">WELCOME BACK</p><h2>Your knowledge.<br><span>One search away.</span></h2><p class="muted">Keep PDFs, notebook photos and typed notes together.</p></div><div class="orb">✦</div></section>
+    <section class="search-panel">
+      <label for="search">ASK YOUR LIBRARY</label>
+      <div class="search-row"><span>⌕</span><input id="search" placeholder="e.g. Find Biology double fertilisation page 8"><button id="clearSearch" title="Clear">×</button></div>
+      <p class="hint">Searches saved titles, subjects, chapters and typed note text on this device.</p>
+    </section>
+    <section class="stats"><div><strong id="totalCount">0</strong><small>SAVED ITEMS</small></div><div><strong id="subjectCount">0</strong><small>SUBJECTS</small></div><div><strong id="bookmarkCount">0</strong><small>BOOKMARKS</small></div></section>
+    <section class="section-head"><div><p class="eyebrow">YOUR COLLECTION</p><h3>Study library</h3></div><button class="primary" id="addBtn">＋ Add notes</button></section>
+    <nav class="tabs"><button class="tab active" data-filter="all">All</button><button class="tab" data-filter="pdf">PDFs</button><button class="tab" data-filter="image">Photos</button><button class="tab" data-filter="text">Typed notes</button><button class="tab" data-filter="bookmarks">Bookmarks</button></nav>
+    <div id="items" class="items"><div class="empty">Your library is waiting.<br><small>Add your first note to get started.</small></div></div>
+    <section class="ai-chat">
+      <div class="ai-chat-head"><div class="ai-icon">✧</div><div><p class="eyebrow">YOUR STUDY COMPANION</p><h3>Ask StudyVault AI</h3><p class="muted">Search your saved notes offline. No server, API key or internet required after installation.</p></div></div>
+      <div id="chatMessages" class="chat-messages"><div class="bubble assistant">Hi! Ask me to find a topic in your saved library. I work offline using smart keyword matching.</div></div>
+      <form id="aiForm" class="ai-form"><input id="aiQuestion" placeholder="Find a topic in your saved notes..." autocomplete="off" required><button class="primary" type="submit">Ask ↗</button></form>
+      <p id="aiStatus" class="hint">Offline library search ready. No cloud AI or server is used.</p>
+    </section>
+  </main>
+  <footer>STUDYVAULT AI <span>•</span> Offline · Private · On this device</footer>
+</div>
+
+<dialog id="addDialog">
+<form id="noteForm" method="dialog">
+<div class="dialog-head"><div><p class="eyebrow">NEW LIBRARY ITEM</p><h2>Add study material</h2></div><button type="button" class="close" id="closeDialog">×</button></div>
+<label>Material type</label><div class="type-picks"><label><input type="radio" name="kind" value="text" checked> Typed note</label><label><input type="radio" name="kind" value="file"> PDF / Photo</label></div>
+<div class="grid2"><div><label for="subject">Subject</label><select id="subject" required><option value="">Choose subject</option><option>Biology</option><option>Physics</option><option>Chemistry</option><option>English</option><option>Assamese</option><option>Mathematics</option><option>Other</option></select></div><div><label for="chapter">Chapter</label><input id="chapter" placeholder="e.g. Sexual Reproduction" required></div></div>
+<label for="title">Title / topic</label><input id="title" placeholder="e.g. Double fertilisation" required>
+<div id="typedFields"><label for="page">Page number (optional)</label><input id="page" type="number" min="1" placeholder="8"><label for="content">Your note</label><textarea id="content" rows="6" placeholder="Type or paste your study notes here..."></textarea></div>
+<div id="fileFields" hidden><label for="upload">Choose PDF or image</label><input id="upload" type="file" accept="application/pdf,image/*"><p class="hint">Files are saved locally in this browser. Large files may use device storage.</p></div>
+<label class="check"><input id="bookmark" type="checkbox"> Save as bookmark</label>
+<div class="actions"><button type="button" class="secondary" id="cancelBtn">Cancel</button><button class="primary" type="submit">Save to library</button></div>
+</form></dialog>
+<dialog id="viewDialog"><div class="dialog-head"><div><p class="eyebrow">STUDY MATERIAL</p><h2 id="viewTitle">Note</h2></div><button class="close" id="closeView">×</button></div><div id="viewMeta" class="muted"></div><div id="viewBody" class="view-body"></div><div class="actions"><button class="secondary" id="deleteItem">Delete</button><button class="primary" id="doneView">Done</button></div></dialog>
+<script src="app.js"></script>
+</body></html>
